@@ -1,0 +1,92 @@
+{% extends "Layout.html" %}
+{% block content %}
+<div class="content-section">
+    <table border="0" cellpadding="20">
+        <tr>
+            <td colspan="2">
+                <center>
+                    <b style="font-size: 70px; font-family: sans-serif;">Register</b>
+                </center>
+            </td>
+        </tr>
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <tr>
+                <td>
+                    <b style="font-size: 30px; font-family: sans-serif;">Username:</b>
+                </td>
+                <td>
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span style="font-size: 17px;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b style="font-size: 30px; font-family: sans-serif;">Email:</b>
+                </td>
+                <td>
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span style="font-size: 17px;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b style="font-size: 30px; font-family: sans-serif;">Password:</b>
+                </td>
+                <td>
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span style="font-size: 17px;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b style="font-size: 30px; font-family: sans-serif;">Confirm Password:</b>
+                </td>
+                <td>
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <span style="font-size: 17px;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <input type="submit" style="font-family: sans-serif; font-size: 50px; font-weight: bold;" value="Create Account" class="button">
+                    </center>
+                </td>
+            </tr>
+        </form>
+    </table>
+</div>
+{% endblock content %}

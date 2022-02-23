@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+{% extends "Layout.html" %}
+{% block content %}
+<script type="text/javascript" src="\static\javascript\check_answer.js"></script>
+<script type="text/javascript" src="\static\javascript\check_if_question_moved.js"></script>
+<div class="content-section">
+    <table width="1100" border="0" cellpadding="6">
+        <tr>
+            <td>
+                <table id="answer_table" border="0" cellpadding="7">
+                    <tr class="base">
+                        <td>
+                            <div style="background-color: #333; width: 150px">
+                                <center>
+                                    <b style="font-size: 25px; font-family: sans-serif; color: white">PIN: <span id="PIN">{{ game_pin }}</span></b>
+                                </center>
+                            </div>
+                        </td>
+                        <td align="right">
+                            <b style="font-size: 20px; font-family: sans-serif;">{{ question_num }} of <span id="number_of_questions">{{ number_of_questions }}</span></b>
+                        </td>
+                    </tr>
+                    <tr class="change_after_click">
+                        <td colspan="2">
+                            <center>
+                                <b style="font-size: 40px; font-family: sans-serif;">{{ question.question }}</b>
+                            </center>
+                        </td>
+                    </tr>
+                    <tr class="change_after_click">
+                        <td>
+                            <button class="answer_button_red answer" id="1">
+                                <img src="\static\shapes\triangle.png" hspace="10" vspace="10">
+                                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ question.answer1 }}</b>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="answer_button_blue answer" id="2">
+                                <img src="\static\shapes\diamond.png" hspace="10" vspace="10">
+                                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ question.answer2 }}</b>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="change_after_click">
+                        <td>
+                            <button class="answer_button_yellow answer" id="3">
+                                <img src="\static\shapes\circle.png" hspace="10" vspace="10">
+                                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ question.answer3 }}</b>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="answer_button_green answer" id="4">
+                                <img src="\static\shapes\square.png" hspace="10" vspace="10">
+                                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ question.answer4 }}</b>
+                            </button>
+                        </td>
+                    </tr>
+                    <!--
+                    <tr class="change_after_click">
+                        <td style="word-wrap: break-word;">
+                            <button class="answer_button_red answer" id="1">
+                                <img src="\static\shapes\triangle.png" hspace="10" vspace="10">
+                            </button>
+                        </td>
+                        <td>
+                            <button class="answer_button_blue answer" id="2">
+                                <img src="\static\shapes\diamond.png" hspace="10" vspace="10">
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="change_after_click">
+                        <td>
+                            <button class="answer_button_yellow answer" id="3">
+                                <img src="\static\shapes\circle.png" hspace="10" vspace="10">
+                            </button>
+                        </td>
+                        <td>
+                            <button class="answer_button_green answer" id="4">
+                                <img src="\static\shapes\square.png" hspace="10" vspace="10">
+                            </button>
+                        </td>
+                    </tr>
+                    -->
+                    <tr>
+                        <td>
+                            <div style="background-color: #333; width: 300px">
+                                <center>
+                                    <b style="font-size: 25px; font-family: sans-serif; color: white">{{ nickname }}</b>
+                                </center>
+                            </div>
+                        </td>
+                        <td align="right">
+                            <div style="background-color: #333; width: 150px">
+                                <center>
+                                    <b style="font-size: 25px; font-family: sans-serif; color: white">{{ points }}</b>
+                                </center>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

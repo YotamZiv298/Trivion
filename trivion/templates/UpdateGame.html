@@ -1,0 +1,175 @@
+{% extends "Layout.html" %}
+{% block content %}
+<script type="text/javascript" src="\static\javascript\update_game.js"></script>
+<script type="text/javascript" src="..\static\javascript\delete_question.js"></script>
+<div class="content-section">
+    <form id="update_game" action="" method="POST">
+        {{ form.hidden_tag() }}
+        <table id="game_table" border="0" cellpadding="7">
+            <tr>
+                <td colspan="3">
+                    <b style="font-size: 50px; font-family: sans-serif;">Game title:</b>
+                    {% if form.title.errors %}
+                        {{ form.title(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                                <span style="font-size: 17px;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.title(class="form-control form-control-lg", value=game.title) }}
+                    {% endif %}
+                </td>
+            </tr>
+             {% for i in range(1, questions|length) %}
+                <tr>
+                    <td colspan="0">
+                        <div id="question_table">
+                            <table border="0" cellpadding="7">
+                                <tr>
+                                    <td colspan="2">
+                                        <b class="questions" id="question_num1" style="font-size: 40px; font-family: sans-serif;">Question {{ questions[i]['Question_Num'] }}:</b>
+                                        {% if form.question.errors %}
+                                            {{ form.question(class="form-control form-control-lg is-invalid") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.question.errors %}
+                                                    <span style="font-size: 17px;">{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.question(class="form-control form-control-lg question", id="question" + i|string, value=questions[i]['Question']) }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <table cellpadding="2">
+                                            <tr>
+                                                <td>
+                                                    <input class="bigcheckbox" id="question_delete_{{ i|string }}" type="checkbox" name="">
+                                                </td>
+                                                <td>
+                                                    <b style="font-size: 25px; font-family: sans-serif; color: #ff3456">Delete Question</b>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <div class="square_red">
+                                            <img align="left" src="\static\shapes\triangle.png" hspace="10" vspace="10">
+                                            {% if form.answer1.errors %}
+                                                {{ form.answer1(class="form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.answer1.errors %}
+                                                        <span style="font-size: 17px;">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.answer1(class="form-control form-control-lg answers", id="answer_1_" + i|string, value=questions[i]['Answer1']) }}
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                    <td align="center">
+                                        <div class="square_blue">
+                                            <img align="left" src="\static\shapes\diamond.png" hspace="10" vspace="10">
+                                            {% if form.answer2.errors %}
+                                                {{ form.answer2(class="form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.answer2.errors %}
+                                                        <span style="font-size: 17px;">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.answer2(class="form-control form-control-lg answers", id="answer_2_" + i|string, value=questions[i]['Answer2']) }}
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                    <td rowspan="2">
+                                        <center>
+                                            <table border="0">
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <b style="font-size: 30px; font-family: sans-serif;">Answer:</b>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                 {% if questions[i]['Ans'] == 1 %}
+                                                    {% set checked1 = 'checked' %}
+                                                 {% elif questions[i]['Ans'] == 2 %}
+                                                    {% set checked2 = 'checked' %}
+                                                 {% elif questions[i]['Ans'] == 3 %}
+                                                    {% set checked3 = 'checked' %}
+                                                 {% elif questions[i]['Ans'] == 4 %}
+                                                    {% set checked4 = 'checked' %}
+                                                 {% endif %}
+                                                    <td>
+                                                        <input class="bigradio" id="question_answer_1_{{ i|string }}" type="radio" name="ans_{{ i|string }}" value="1" {{ checked1 }}>
+                                                        <img align="left" src="\static\shapes\triangle.png" hspace="10" vspace="10">
+                                                    </td>
+                                                    <td>
+                                                        <input class="bigradio" id="question_answer_2_{{ i|string }}" type="radio" name="ans_{{ i|string }}" value="2" {{ checked2 }}>
+                                                        <img align="left" src="\static\shapes\diamond.png" hspace="10" vspace="10">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input class="bigradio" id="question_answer_3_{{ i|string }}" type="radio" name="ans_{{ i|string }}" value="3" {{ checked3 }}>
+                                                        <img align="left" src="\static\shapes\circle.png" hspace="10" vspace="10">
+                                                    </td>
+                                                    <td>
+                                                        <input class="bigradio" id="question_answer_4_{{ i|string }}" type="radio" name="ans_{{ i|string }}" value="4" {{ checked4 }}>
+                                                        <img align="left" src="\static\shapes\square.png" hspace="10" vspace="10">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <div class="square_yellow">
+                                            <img align="left" src="\static\shapes\circle.png" hspace="10" vspace="10">
+                                            {% if form.answer3.errors %}
+                                                {{ form.answer3(class="form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.answer3.errors %}
+                                                        <span style="font-size: 17px;">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.answer3(class="form-control form-control-lg answers", id="answer_3_" + i|string, value=questions[i]['Answer3']) }}
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                    <td align="center">
+                                        <div class="square_green">
+                                            <img align="left" src="\static\shapes\square.png" hspace="10" vspace="10">
+                                            {% if form.answer4.errors %}
+                                                {{ form.answer4(class="form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.answer4.errors %}
+                                                        <span style="font-size: 17px;">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.answer4(class="form-control form-control-lg answers", id="answer_4_" + i|string, value=questions[i]['Answer4']) }}
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+             {% endfor %}
+            <tr>
+                <td colspan="0">
+                    <center>
+                        <input type="submit" style="font-family: sans-serif;" class="save" value="Update">
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock content %}

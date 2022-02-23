@@ -1,0 +1,75 @@
+{% extends "Layout.html" %}
+{% block content %}
+<script type="text/javascript" src="\static\javascript\game_settings.js"></script>
+<script type="text/javascript">
+var timeleft = {{ timer }};
+var time_original = {{ timer }};
+var question_number = {{ question.question_number }};
+var PIN = {{ game_pin }}
+</script>
+<script type="text/javascript" src="\static\javascript\timer.js"></script>
+
+<div class="content-section">
+    <table width="1100" border="0" cellpadding="6">
+        <tr>
+            <td>
+                <table border="0" cellpadding="7">
+                    <tr>
+                        <td colspan="2">
+                            <center>
+                                <b style="font-size: 40px; font-family: sans-serif;">{{ question.question }}</b>
+                            </center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <center>
+                                <b style="font-size: 30px; font-family: sans-serif; color: white;" id="countdowntimer">{{ timer }}</b>
+                            </center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="word-wrap: break-word;">
+                            <div class="square_red">
+                                <img align="left" src="\static\shapes\triangle.png" hspace="10" vspace="10">
+                                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ question.answer1 }}</b>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="square_blue">
+                                <img align="left" src="\static\shapes\diamond.png" hspace="10" vspace="10">
+                                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ question.answer2 }}</b>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="square_yellow">
+                                <img align="left" src="\static\shapes\circle.png" hspace="10" vspace="10">
+                                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ question.answer3 }}</b>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="square_green">
+                                <img align="left" src="\static\shapes\square.png" hspace="10" vspace="10">
+                                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ question.answer4 }}</b>
+                            </div>
+                        </td>
+                    </tr>
+                    <!--
+                    <tr>
+                        <td colspan="2">
+                            <center>
+                                <a href="{{ url_for('games.results', game_id=game_id, game_pin=game_pin, question_number=question.question_number, timer=[timer]) }}">
+                                    <button style="font-family: sans-serif; color: white;" class="save">Next</button>
+                                </a>
+                            </center>
+                        </td>
+                    </tr>
+                    -->
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

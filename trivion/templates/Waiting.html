@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+{% extends "Layout.html" %}
+{% block content %}
+<script type="text/javascript" src="\static\javascript\check_if_game_started.js"></script>
+<div class="content-section">
+    <table border="0" cellpadding="10">
+        <tr>
+            <td bgcolor="white">
+                <b style="font-size: 40px; font-family: sans-serif;">PIN: </b><b id="PIN" style="font-size: 40px; font-family: sans-serif;">{{ PIN }}</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <b style="font-size: 90px; font-family: sans-serif;">You're in!</b>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <div class="spinner-border text-success" role="status">
+                        <span style="size: 50px" class="sr-only">Loading...</span>
+                    </div>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <b style="font-size: 45px; font-family: sans-serif;">Look if you can see yourself on screen!</b>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <b style="font-size: 45px; font-family: sans-serif;">Wait until the host starts the game</b>
+                </center>
+
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="white">
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "Layout.html" %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+      $( "#draggable" ).draggable();
+  });
+</script>
+<div class="content-section">
+    <table border="0">
+        <tr>
+            <td>
+                <center>
+                    <div id="draggable" class="ui-widget-content">
+                        <img src="\static\Trivion_Banner.png" height="230px">
+                    </div>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <b style="font-size: 20px; font-family: sans-serif;">Trivion for Web</b>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <b style="font-size: 20px; font-family: sans-serif;">Copyright © 2019-2020 Trivion by Yotam Ziv,</b>
+                    <br>
+                    <b style="font-size: 20px; font-family: sans-serif;">All Rights Reserved</b>
+                </center>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

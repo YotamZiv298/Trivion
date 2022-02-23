@@ -1,0 +1,51 @@
+{% extends "Layout.html" %}
+{% block content %}
+<style>
+    .leaderboard {
+        animation: fadeInAnimation ease 3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+<div class="content-section">
+    <table width="1200" border="0" cellpadding="10">
+        <tr>
+            <td colspan="3">
+                <center>
+                    <b style="font-size: 50px; font-family: sans-serif;">Final Scores!</b>
+                </center>
+            </td>
+        </tr>
+        {% for i in range(0, data|length) %}
+        <tr class="leaderboard">
+            <td>
+                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ i + 1 }}</b>
+            </td>
+            <td>
+                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ data[i]['name'] }}</b>
+            </td>
+            <td align="center">
+                <b style="font-size: 40px; font-family: sans-serif; color: white;">{{ data[i]['score'] }}</b>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="3">
+                <center>
+                    <a href="{{ url_for('main.home') }}">
+                        <button type="button" style="font-family: sans-serif; color: white;" class="save">Home Page</button>
+                    </a>
+                </center>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

@@ -1,0 +1,152 @@
+{% extends "Layout.html" %}
+{% block content %}
+<script type="text/javascript" src="..\static\javascript\save_game.js"></script>
+<div class="content-section">
+    <form id="save_game" action="" method="POST">
+        {{ form.hidden_tag() }}
+        <table id="game_table" border="0" cellpadding="7">
+            <tr>
+                <td colspan="3">
+                    <b style="font-size: 50px; font-family: sans-serif;">Game title:</b>
+                    {% if form.title.errors %}
+                        {{ form.title(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                                <span style="font-size: 17px;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.title(class="form-control form-control-lg", id='title') }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="0">
+                    <div id="question_table">
+                        <table border="0" cellpadding="7">
+                            <tr>
+                                <td colspan="2">
+                                    <b class="questions" id="question_num1" style="font-size: 40px; font-family: sans-serif;">Question 1:</b>
+                                    {% if form.question.errors %}
+                                        {{ form.question(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.question.errors %}
+                                                <span style="font-size: 17px;">{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.question(class="form-control form-control-lg question", id="question1") }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <div class="square_red">
+                                        <img align="left" src="..\static\shapes\triangle.png" hspace="10" vspace="10">
+                                        {% if form.answer1.errors %}
+                                            {{ form.answer1(class="form-control form-control-lg is-invalid") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.answer1.errors %}
+                                                    <span style="font-size: 17px;">{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.answer1(class="form-control form-control-lg answers", id="answer_1_1") }}
+                                        {% endif %}
+                                    </div>
+                                </td>
+                                <td align="center">
+                                    <div class="square_blue">
+                                        <img align="left" src="..\static\shapes\diamond.png" hspace="10" vspace="10">
+                                        {% if form.answer2.errors %}
+                                            {{ form.answer2(class="form-control form-control-lg is-invalid") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.answer2.errors %}
+                                                    <span style="font-size: 17px;">{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.answer2(class="form-control form-control-lg answers", id="answer_2_1") }}
+                                        {% endif %}
+                                    </div>
+                                </td>
+                                <td rowspan="2">
+                                    <center>
+                                        <table border="0">
+                                            <tr>
+                                                <td colspan="2">
+                                                    <b style="font-size: 30px; font-family: sans-serif;">Answer:</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input class="bigradio" id="question_answer_1_1" type="radio" name="ans_1" value="1">
+                                                    <img align="left" src="..\static\shapes\triangle.png" hspace="10" vspace="10">
+                                                </td>
+                                                <td>
+                                                    <input class="bigradio" id="question_answer_2_1" type="radio" name="ans_1" value="2">
+                                                    <img align="left" src="..\static\shapes\diamond.png" hspace="10" vspace="10">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input class="bigradio" id="question_answer_3_1" type="radio" name="ans_1" value="3">
+                                                    <img align="left" src="..\static\shapes\circle.png" hspace="10" vspace="10">
+                                                </td>
+                                                <td>
+                                                    <input class="bigradio" id="question_answer_4_1" type="radio" name="ans_1" value="4">
+                                                    <img align="left" src="..\static\shapes\square.png" hspace="10" vspace="10">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <div class="square_yellow">
+                                        <img align="left" src="..\static\shapes\circle.png" hspace="10" vspace="10">
+                                        {% if form.answer3.errors %}
+                                            {{ form.answer3(class="form-control form-control-lg is-invalid") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.answer3.errors %}
+                                                    <span style="font-size: 17px;">{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.answer3(class="form-control form-control-lg answers", id="answer_3_1") }}
+                                        {% endif %}
+                                    </div>
+                                </td>
+                                <td align="center">
+                                    <div class="square_green">
+                                        <img align="left" src="..\static\shapes\square.png" hspace="10" vspace="10">
+                                        {% if form.answer4.errors %}
+                                            {{ form.answer4(class="form-control form-control-lg is-invalid") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.answer4.errors %}
+                                                    <span style="font-size: 17px;">{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.answer4(class="form-control form-control-lg answers", id="answer_4_1") }}
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="0">
+                    <center>
+                        <input id="add_q_button" type="button" style="font-family: sans-serif;" class="save" value="Add Question" onclick="addQuestion()">
+                        <input type="submit" style="font-family: sans-serif;" class="save" value="Create">
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock content %}

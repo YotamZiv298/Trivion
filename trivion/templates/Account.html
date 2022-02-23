@@ -1,0 +1,96 @@
+{% extends "Layout.html" %}
+{% block content %}
+<div class="content-section">
+    <table border="0">
+        <tr>
+            <td>
+                <table border="0" cellpadding="20">
+                        <tr>
+                            <td rowspan="2">
+                                <img style="height: 150px; width: 150px;" class="rounded-circle account-img" src="{{ image_file }}">
+                            </td>
+                            <td>
+                                <h2 style="font-family: sans-serif;" class="account-heading">{{ current_user.username }}</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p style="font-family: sans-serif;" class="text-secondary"><b>{{ current_user.email }}</b></p>
+                            </td>
+                        </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table border="0" cellpadding="20">
+                    <tr>
+                        <td colspan="2">
+                            <center>
+                                <b style="font-size: 30px; font-family: sans-serif;">Account Info</b>
+                            </center>
+                        </td>
+                    </tr>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        <tr>
+                            <td>
+                                <b style="font-size: 25px; font-family: sans-serif;">Username:</b>
+                            </td>
+                            <td>
+                                {% if form.username.errors %}
+                                    {{ form.username(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.username.errors %}
+                                            <span style="font-size: 17px;">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.username(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b style="font-size: 25px; font-family: sans-serif;">Email:</b>
+                            </td>
+                            <td>
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            <span style="font-size: 17px;">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.email(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b style="font-size: 25px; font-family: sans-serif;">Update profile picture:</b>
+                            </td>
+                            <td>
+                                {{ form.picture(class="form-control-file") }}
+                                {% if form.picture.errors %}
+                                    {% for error in form.picture.errors %}
+                                        <span style="font-size: 17px;" class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <center>
+                                    <input type="submit" style="font-family: sans-serif; font-size: 30px; font-weight: bold;" value="Update" class="button">
+                                </center>
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

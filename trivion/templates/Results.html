@@ -1,0 +1,223 @@
+{% extends "Layout.html" %}
+{% block content %}
+<script type="text/javascript">
+var timeleft = 5;
+var question_number = {{ question_number }};
+var PIN = {{ game_pin }}
+
+var timer = setInterval(function(){
+    timeleft--;
+    document.getElementById("countdowntimer").textContent = timeleft;
+    if(timeleft == 0)
+    {
+        clearInterval(timer);
+        window.location.replace("/game/" + window.location.pathname.split('/')[2] + "/" + PIN.toString() + "/question" + (Number(question_number) + 1) + "/" + {{ timer }});
+    }
+},1000);
+</script>
+
+<div class="content-section">
+    <table width="1700" border="0" cellpadding="10">
+        <tr>
+            <td colspan="4">
+                <center>
+                    <b style="font-size: 50px; font-family: sans-serif;">Results Question {{ question_number }}</b>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <b id="a" style="font-size: 40px; font-family: sans-serif; color: white;">{{ answer_counter[0] }}</b>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <b id="b" style="font-size: 40px; font-family: sans-serif; color: white;">{{ answer_counter[1] }}</b>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <b id="c" style="font-size: 40px; font-family: sans-serif; color: white;">{{ answer_counter[2] }}</b>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <b id="d" style="font-size: 40px; font-family: sans-serif; color: white;">{{ answer_counter[3] }}</b>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <div style="border-radius: 4px 4px 0 0;" class="small_square_red">
+                        <center>
+                        </center>
+                    </div>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <div style="border-radius: 4px 4px 0 0;" class="small_square_blue">
+                        <center>
+                        </center>
+                    </div>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <div style="border-radius: 4px 4px 0 0;" class="small_square_yellow">
+                        <center>
+                        </center>
+                    </div>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <div style="border-radius: 4px 4px 0 0;" class="small_square_green">
+                        <center>
+                        </center>
+                    </div>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <div class="small_square_red">
+                        <center>
+                            <img src="\static\shapes\triangle.png" hspace="10" vspace="10">
+                        </center>
+                    </div>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <div class="small_square_blue">
+                        <center>
+                            <img src="\static\shapes\diamond.png" hspace="10" vspace="10">
+                        </center>
+                    </div>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <div class="small_square_yellow">
+                        <center>
+                            <img src="\static\shapes\circle.png" hspace="10" vspace="10">
+                        </center>
+                    </div>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <div class="small_square_green">
+                        <center>
+                            <img src="\static\shapes\square.png" hspace="10" vspace="10">
+                        </center>
+                    </div>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            {% if answer_counter[4]['correct_ans'][0] == 1 %}
+            <td>
+                <center>
+                    <img src="\static\correct.png">
+                </center>
+                <center>
+                    <b style="font-size: 20px; font-family: sans-serif; color: white;">{{ answer_counter[4]['correct_ans'][1] }}</b>
+                </center>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            {% elif answer_counter[4]['correct_ans'][0] == 2 %}
+            <td>
+            </td>
+            <td>
+                <center>
+                    <img src="\static\correct.png">
+                </center>
+                <center>
+                    <b style="font-size: 20px; font-family: sans-serif; color: white;">{{ answer_counter[4]['correct_ans'][1] }}</b>
+                </center>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            {% elif answer_counter[4]['correct_ans'][0] == 3 %}
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                <center>
+                    <img src="\static\correct.png">
+                </center>
+                <center>
+                    <b style="font-size: 20px; font-family: sans-serif; color: white;">{{ answer_counter[4]['correct_ans'][1] }}</b>
+                </center>
+            </td>
+            <td>
+            </td>
+            {% elif answer_counter[4]['correct_ans'][0] == 4 %}
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                <center>
+                    <img src="\static\correct.png">
+                </center>
+                <center>
+                    <b style="font-size: 20px; font-family: sans-serif; color: white;">{{ answer_counter[4]['correct_ans'][1] }}</b>
+                </center>
+            </td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td colspan="4">
+                <center>
+                    <table width="900" cellpadding="10" border="3">
+                        {% for i in range(0, player_table_scores|length) %}
+                        <tr>
+                            <td>
+                                <b style="font-size: 30px; font-family: sans-serif; color: white;">{{ i + 1 }}</b>
+                            </td>
+                            <td>
+                                <b style="font-size: 30px; font-family: sans-serif; color: white;">{{ player_table_scores[i]['name'] }}</b>
+                            </td>
+                            <td align="center">
+                                <b style="font-size: 30px; font-family: sans-serif; color: white;">{{ player_table_scores[i]['score'] }}</b>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <!--
+                <center>
+                    <a href="{{ url_for('games.question_display', game_id=game_id, game_pin=game_pin, question_number=(question_number | int) + 1, timer=timer) }}">
+                        <button type="button" style="font-family: sans-serif; color: white;" class="save">Next</button>
+                    </a>
+                </center>
+                -->
+                <center>
+                    <b style="font-size: 30px; font-family: sans-serif; color: white;">Next question in </b><b style="font-size: 30px; font-family: sans-serif; color: white;" id="countdowntimer">5</b>
+                </center>
+            </td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript" src="\static\javascript\answers_bars.js"></script>
+{% endblock content %}

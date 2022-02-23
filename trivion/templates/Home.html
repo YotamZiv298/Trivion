@@ -1,0 +1,30 @@
+{% extends "Layout.html" %}
+{% block content %}
+<div class="content-section">
+    <table border="0" cellpadding="39">
+        <tr>
+            <td colspan="2">
+                <center>
+                    <img src="static\Trivion_Banner.png" height="450px">
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <a href="{{ url_for('games.load_game') }}">
+                        <button class="button"><b style="font-family: sans-serif;">LOAD GAME</b></button>
+                    </a>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <a href="{{ url_for('games.new_game') }}">
+                        <button class="button"><b style="font-family: sans-serif;">NEW GAME</b></button>
+                    </a>
+                </center>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

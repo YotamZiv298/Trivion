@@ -1,0 +1,93 @@
+{% extends "Layout.html" %}
+{% block content %}
+<script type="text/javascript" src="\static\javascript\update_player_table.js"></script>
+<div class="content-section">
+    <table width="1700" border="0" cellpadding="6">
+        <tr>
+            <td colspan="2">
+                <center>
+                    <table cellpadding="5" style="box-shadow: 0 4px #cccccc;" border="0" bgcolor="white">
+                        <tr>
+                            <td>
+                                <b style="font-size: 40px; font-family: sans-serif;">Join with the <b>Trivion app/website</b></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b style="font-size: 20px; font-family: sans-serif;">with Game PIN:</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <b id="PIN" style="font-size: 70px; font-family: sans-serif;">{{ PIN }}</b>
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <center>
+                    <table style="table-layout: fixed;" border="0" width="100%">
+                        <tr>
+                            <td>
+                                <table border="0">
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <b id="counter" style="font-size: 40px; font-family: sans-serif; color: white;">0</b>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <i style="font-size: 30px; font-family: sans-serif; color: white;"><b>Players</b></i>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <center>
+                                    <img src="\static\Trivion_Banner.png" height="150px">
+                                </center>
+                            </td>
+                            <td align="right">
+                                <a href="{{ url_for('games.game_settings', game_id=game.g_id, game_pin=PIN) }}">
+                                    <button style="font-family: sans-serif; color: white;" class="save">Start</button>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <center>
+                    <table border="0" cellpadding="4">
+                        <tr id="PlayersList">
+                        </tr>
+                    </table>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style="border-radius: 0 0 7px 7px" bgcolor="#1169ce" border="0" width="100%">
+                    <tr>
+                        <td width="1%">
+                            <img src="\static\info_icon.png" height="50px">
+                        </td>
+                        <td>
+                            <b style="font-size: 20px; font-family: sans-serif; color: white">Waiting for players...</b>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

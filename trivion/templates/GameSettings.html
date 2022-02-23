@@ -1,0 +1,49 @@
+{% extends "Layout.html" %}
+{% block content %}
+<script type="text/javascript" src="\static\javascript\game_settings.js"></script>
+<div class="content-section">
+    <form id="game_settings" action="" method="POST">
+        <table width="1100" border="0" cellpadding="6">
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <b style="font-size: 50px; font-family: sans-serif;">{{ game.title }} Settings</b>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b style="font-size: 30px; font-family: sans-serif; color: white;">Time for each question?</b>
+                </td>
+                <td>
+                    <select class="form-control" id="timer">
+                        <option value="5">5 seconds</option>
+                        <option value="10">10 seconds</option>
+                        <option value="15">15 seconds</option>
+                        <option value="20">20 seconds</option>
+                        <option value="25">25 seconds</option>
+                        <option value="30">30 seconds</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b style="font-size: 30px; font-family: sans-serif; color: white;">Randomize order of questions?</b>
+                </td>
+                <td>
+                    <input class="bigcheckbox" type="checkbox" id="randomize_order">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <a href="{{ url_for('games.start', game_id=game.g_id) }}">
+                            <button type="submit" style="font-family: sans-serif; color: white;" class="save">Start</button>
+                        </a>
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock content %}
